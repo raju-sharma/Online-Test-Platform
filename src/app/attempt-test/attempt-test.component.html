@@ -1,0 +1,87 @@
+<!--Test Section -->
+<div *ngIf="!review_Flag">
+  <div *ngIf='index_Number>=0 && index_Number <= 4'>
+    <button   class="btn btn-info" >correct 1 marks</button>
+    <button   class="btn btn-info pull-right" >Incorrect -0.33 marks</button>
+   </div>
+
+ <div *ngIf='index_Number>=5 && index_Number <=9'>
+    <button   class="btn btn-info" >correct 2 marks</button>
+    <button   class="btn btn-info pull-right" >Incorrect -0.66 marks</button>
+  </div>
+ 
+     <h3 class="well well-lg">{{question_Number}}.&nbsp;{{linear_Algebra[index_Number].question}} </h3> 
+        <div class= "well well-sm" *ngFor="let option of linear_Algebra[index_Number].choices;let i=index">
+      
+      <input type ="radio"  name='linear_Algebra[index_Number]'  id='linear_Algebra[index_Number].choices[i]["option_Id"]'  value ="linear_Algebra[index_Number].choices[0]['option_Id']"  
+      (change)='updateTable(linear_Algebra[index_Number].id,linear_Algebra[index_Number].choices[i]["option_Id"])' 
+      [checked]='answer_attempted[index_Number]!==-1 && button_id[linear_Algebra[index_Number].choices[i]["option_Id"]]'>
+    
+      {{ linear_Algebra[index_Number].choices[i]["option"] }}<br>
+     </div>
+  
+  
+     <div>
+      <button class="btn btn-primary" (click)="previousQuestion()">Back</button>&nbsp;
+      <button class="btn btn-primary" (click)="nextQuestion()">Next</button>&nbsp;
+      <button class="btn btn-warning" (click)='Clear(linear_Algebra[index_Number].id)'>Clear</button>&nbsp;
+      <button type="submit" class="btn btn-success" (click)="reviewTest()">Review</button>
+      <button type="button" class="btn btn-danger btn-lg  pull-right" (click)='logout()'>Home</button>
+      <br><br> <br>
+      <button type="submit" class="btn btn-success btn-lg" (click)="beforeReviewSubmitTest()">Submit</button>
+     
+  
+  </div>
+      </div>
+
+<!-- REVIEW SECTION -->
+
+      <div *ngIf="review_Flag"> 
+          <h1>TEST REVIEW</h1>
+          <table class="table table-condensed">
+            <tr>
+              <th>Set</th>
+              <th>No.of Questions</th>
+              <th>Answer</th> 
+              <th>Not Answer</th>
+            </tr>
+            <tr>
+                <td>1-marks</td>
+                <td>5</td> 
+                <td>{{attempted1}}</td>
+                <td>{{not_attempted1}}</td>
+              </tr>
+            <tr>
+              <td>2-marks</td>
+              <td>5</td> 
+              <td>{{attempted2}}</td>
+              <td>{{not_attempted2}}</td>
+            </tr>
+            <tr>
+              <td>Total</td>
+              <td>10</td> 
+              <td>{{total_attempted}}</td>
+              <td>{{total_notattempted}}</td>
+            </tr>
+           </table>
+           <div class="well">
+           <h1>
+           Question Status
+           </h1>
+           </div>
+             <div>
+             <label>Attempted &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+             <button type="button" class="btn btn-primary"></button><br>
+             <label>Not Attempted</label>
+             <button type="button" class="btn btn-warning"></button><br>
+          </div>
+          
+        <div *ngFor="let a of answer_attempted,let j=index" class="well" >
+           <button type="button" [ngClass]="{btn:true,'btn-warning':answer_attempted[j]===-1, 'btn-primary':answer_attempted[j]!==-1}"  >{{status}}</button> 
+           {{linear_Algebra[j].question}} 
+          </div>
+          <div>
+              <button type="submit" class="btn btn-primary" (click)="resumeTest()">Resume Test</button>
+           <button type="submit"  class="btn btn-success pull-right" (click)="submitTest()">Submit Test</button>
+          
+        </div>

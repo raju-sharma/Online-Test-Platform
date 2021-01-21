@@ -1,0 +1,19 @@
+<div class="well">
+    <input type="text"
+    class="form-control"
+    placeholder="search"
+    [(ngModel)]="query" />
+  </div>
+  
+  <div *ngFor="let task of (discrete_Maths | customSearch:query); let i=index" class="col-md-3">
+    <div class="jumbotron">
+      <h2>{{task.title}}</h2>
+      <p>
+        <b>{{number_of_questions}}</b> Questions<br><b>{{marks}}</b> Marks<br>
+        <button type="button" (mouseover)= "syllabus(i)" (mouseout)="setSpan(i)"class="btn btn-info">Syllabus Info</button>
+        <span *ngIf="flag && i==Setindex"><font color="grey">{{discrete_Syllabus}}</font></span>
+        </p>
+        <p><button type="button" routerLink="/attempt-test" class="btn btn-primary btn-lg"  >Open Quiz</button></p>
+      </div>
+      </div>
+   

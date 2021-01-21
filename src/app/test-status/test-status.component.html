@@ -1,0 +1,68 @@
+
+<div *ngIf='!reviewanswer'>
+    <h1>
+        <div  align="center" class="alert alert-success">Result</div>
+        </h1>
+
+        <table class="table table-condensed">
+          <tr>
+            <th>Set</th>
+            <th>No.of Questions</th>
+            <th>Not Answer</th> 
+            <th>Right Answer</th>
+            <th>Wrong Answer</th>
+            <th>Marks</th>
+          </tr>
+          <tr>
+              <td>1-marks</td>
+              <td>5</td> 
+              <td>{{notanswer1}}</td>
+              <td>{{rightanswer1}}</td>
+              <td>{{wronganswer1}}</td>
+              <td>{{marks1}}</td>
+            </tr>
+          <tr>
+            <td>2-marks</td>
+            <td>5</td> 
+            <td>{{notanswer2}}</td>
+            <td>{{rightanswer2}}</td>
+            <td>{{wronganswer2}}</td>
+            <td>{{marks2}}</td>
+          </tr>
+          <tr>
+            <td>Total</td>
+            <td>10</td> 
+            <td>{{totalnotanswer}}</td>
+            <td>{{totalrightanswer}}</td>
+            <td>{{totalwronganswer}}</td>
+            <td><b>{{totalmarks}}</b></td>
+          </tr>
+         </table>
+   
+         <button type="submit"class="btn btn-danger pull-right btn-lg" (click)='logout()'>Logout</button>
+<button type="submit" routerLink="/test"class="btn btn-primary btn-lg">Home</button><br><br>
+<button type="submit" class="btn btn-warning btn-lg"(click)='reviewPaper()'>Review</button>
+</div>
+<div *ngIf="reviewanswer">
+   
+    <h1>
+        <div  align="center" class="alert alert-success">Test Paper</div>
+        </h1>
+        <div>
+            <label>Not Answer</label>
+            <button type="button" class="btn"></button><br>
+            <label>Correct &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <button type="button" class="btn btn-success"></button><br>
+            <label>Wrong&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <button type="button" class="btn btn-danger"></button><br>
+         </div>
+    <div *ngFor="let a of answer_attempted,let j=index" class="well" >
+        <button type="button" [ngClass]="{btn:true,'btn-danger':answer_attempted[j]!=-1 && answer_attempted[j]!=correctanswer[j],'btn-success':answer_attempted[j]==correctanswer[j]}"  ></button> 
+       {{question_number[j]}}. {{linear_Algebra[j].question}} 
+       </div>
+       <div class='well'>
+          <button type="submit"class="btn btn-primary btn-lg" (click)='Back()'>Back</button>
+       <button type="submit"class="btn btn-danger pull-right btn-lg" (click)='logout()'>Logout</button>
+       <button type="submit" routerLink="/test"class="btn btn-warning btn-lg">Home</button>
+      </div>
+    </div>

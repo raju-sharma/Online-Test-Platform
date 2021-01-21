@@ -1,0 +1,13 @@
+
+.well
+{
+    height: 75px;
+    width: 100%;
+    background-color: rgb(144, 238, 210);
+}
+.footer {
+height:150px;
+width:100%;
+background-color: lightsalmon;
+font-size: 20px;
+}

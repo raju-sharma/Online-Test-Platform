@@ -1,0 +1,48 @@
+<!-- Header Section -->
+<div class="navbar navbar-inverse navbar-fixed-top"  >
+    
+    <h1 align="center"><font color="white">
+        Mathematics Quiz</font>
+      <button type="button" class="btn btn-warning btn-lg pull-left" (click)='logout()'>Logout</button> </h1>
+  </div>
+  
+<!-- Dropdown Section -->
+<br><br><br><br><br>
+<div>
+  <h4>
+<select class="well"  id="category"  (change)="selectTopic($event)">
+  <option *ngFor="let category of categories" [value]="category">
+  {{category}}
+</option>
+ </select>
+</h4>
+</div>
+
+<!--Selected Component Section -->
+<div *ngIf='topic=="linear Algebra"'>
+  <div class="row">
+      <app-linear-algebra></app-linear-algebra>
+    </div>
+  </div>
+ <div *ngIf='topic=="Discrete Mathematics"'>
+      <div class="row">
+        <app-discrete-mathematics></app-discrete-mathematics>
+        </div>
+       </div>
+
+       <!--Footer Section -->
+ <h1>Contact information</h1>
+       <div class="footer">
+         <br>
+           <button type="button" class="btn btn-info" aria-label="Left Align">
+                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+              </button>
+                rajusharma5015@gmail.com <br>
+                
+             <a href="https://www.facebook.com">
+              <img src="https://cdn.onlinewebfonts.com/svg/img_5685.png" height="40px"> Facebook  </a><br>
+             
+             <button type="button" class="btn btn-success" aria-label="Left Align">
+                              <span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+                            </button> 7973715015
+         </div>
